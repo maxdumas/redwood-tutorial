@@ -5,7 +5,9 @@ import { BeforeResolverSpecType } from '@redwoodjs/api'
 
 // Used when the environment variable REDWOOD_SECURE_SERVICES=1
 export const beforeResolver = (rules: BeforeResolverSpecType) => {
-  rules.add(requireAuth)
+  rules.skip({
+    only: ['posts'],
+  })
 }
 
 export const posts = () => {
@@ -23,6 +25,7 @@ interface CreatePostArgs {
 }
 
 export const createPost = ({ input }: CreatePostArgs) => {
+  requireAuth()
   return db.post.create({
     data: input,
   })
@@ -33,6 +36,7 @@ interface UpdatePostArgs extends Prisma.PostWhereUniqueInput {
 }
 
 export const updatePost = ({ id, input }: UpdatePostArgs) => {
+  requireAuth()
   return db.post.update({
     data: input,
     where: { id },
@@ -40,6 +44,7 @@ export const updatePost = ({ id, input }: UpdatePostArgs) => {
 }
 
 export const deletePost = ({ id }: Prisma.PostWhereUniqueInput) => {
+  requireAuth()
   return db.post.delete({
     where: { id },
   })
