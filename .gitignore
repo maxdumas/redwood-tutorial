@@ -4,3 +4,6 @@ api/types/graphql.d.ts
 
 # Local Netlify folder
 .netlify
+
+# Environment file
+.env
