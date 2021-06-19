@@ -1,3 +1,17 @@
+type Contact {
+  id: Int!
+  name: String!
+  email: String!
+  message: String!
+  createdAt: DateTime!
+}
+
+input CreateContactInput {
+  name: String!
+  email: String!
+  message: String!
+}
+
 input CreatePostInput {
   title: String!
   body: String!
@@ -12,9 +26,10 @@ scalar JSON
 scalar JSONObject
 
 type Mutation {
+  createContact(input: CreateContactInput!): Contact
   createPost(input: CreatePostInput!): Post!
-  updatePost(id: Int!, input: UpdatePostInput!): Post!
   deletePost(id: Int!): Post!
+  updatePost(id: Int!, input: UpdatePostInput!): Post!
 }
 
 type Post {
@@ -25,6 +40,7 @@ type Post {
 }
 
 type Query {
+  contacts: [Contact!]!
   post(id: Int!): Post
   posts: [Post!]!
   redwood: Redwood
@@ -37,6 +53,12 @@ type Redwood {
 }
 
 scalar Time
+
+input UpdateContactInput {
+  name: String
+  email: String
+  message: String
+}
 
 input UpdatePostInput {
   title: String

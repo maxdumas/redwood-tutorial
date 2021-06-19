@@ -6,14 +6,32 @@ import {
   TextAreaField,
   Submit,
 } from '@redwoodjs/forms'
+import { useMutation } from '@redwoodjs/web'
+import { toast, Toaster } from '@redwoodjs/web/toast'
+
+const CREATE_CONTACT = gql`
+  mutation CreateContactMutation($input: CreateContactInput!) {
+    createContact(input: $input) {
+      id
+    }
+  }
+`
 
 const ContactPage = () => {
-  const onSubmit = (data) => {
-    console.log(data)
+  const [create, { loading, error }] = useMutation(CREATE_CONTACT, {
+    onCompleted: () => {
+      toast.success('u da bich boi')
+    },
+  })
+
+  const onSubmit = (input) => {
+    console.log(input)
+    create({ variables: { input } })
   }
 
   return (
     <>
+      <Toaster />
       <Form onSubmit={onSubmit} validation={{ mode: 'onBlur' }}>
         <Label name="name" errorClassName="error">
           Name
@@ -51,7 +69,7 @@ const ContactPage = () => {
         />
         <FieldError name="message" className="error" />
 
-        <Submit>Save</Submit>
+        <Submit disabled={loading}>Save</Submit>
       </Form>
     </>
   )
