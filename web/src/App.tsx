@@ -1,6 +1,7 @@
 import { AuthProvider } from '@redwoodjs/auth'
 import netlifyIdentity from 'netlify-identity-widget'
 import { isBrowser } from '@redwoodjs/prerender/browserUtils'
+
 import { FatalErrorBoundary } from '@redwoodjs/web'
 import { RedwoodApolloProvider } from '@redwoodjs/web/apollo'
 
@@ -9,6 +10,8 @@ import Routes from 'src/Routes'
 
 import './scaffold.css'
 import './index.css'
+
+
 
 isBrowser && netlifyIdentity.init()
 
