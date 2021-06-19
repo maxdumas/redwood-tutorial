@@ -81,6 +81,19 @@ export type UpdatePostInput = {
   body?: Maybe<Scalars['String']>;
 };
 
+export type FindBlogPostQueryVariables = Exact<{
+  id: Scalars['Int'];
+}>;
+
+
+export type FindBlogPostQuery = (
+  { __typename?: 'Query' }
+  & { post?: Maybe<(
+    { __typename?: 'Post' }
+    & Pick<Post, 'id' | 'title' | 'body' | 'createdAt'>
+  )> }
+);
+
 export type BlogPostsQueryVariables = Exact<{ [key: string]: never; }>;
 
 

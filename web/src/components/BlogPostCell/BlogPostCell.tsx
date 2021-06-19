@@ -1,11 +1,10 @@
-import { Link, routes } from '@redwoodjs/router'
-import type { BlogPostsQuery } from 'types/graphql'
+import type { FindBlogPostQuery } from 'types/graphql'
 import type { CellSuccessProps, CellFailureProps } from '@redwoodjs/web'
 import BlogPost from 'src/components/BlogPost'
 
 export const QUERY = gql`
-  query BlogPostsQuery {
-    posts {
+  query FindBlogPostQuery($id: Int!) {
+    post(id: $id) {
       id
       title
       body
@@ -22,6 +21,6 @@ export const Failure = ({ error }: CellFailureProps) => (
   <div style={{ color: 'red' }}>Error: {error.message}</div>
 )
 
-export const Success = ({ posts }: CellSuccessProps<BlogPostsQuery>) => {
-  return posts.map((post) => <BlogPost key={post.id} post={post} />)
+export const Success = ({ post }: CellSuccessProps<FindBlogPostQuery>) => {
+  return <BlogPost key={post.id} post={post} />
 }

@@ -12,6 +12,7 @@ declare module '@redwoodjs/router' {
     editPost: (params?: RouteParams<"/posts/{id:Int}/edit"> & QueryParams) => "/posts/{id:Int}/edit"
     post: (params?: RouteParams<"/posts/{id:Int}"> & QueryParams) => "/posts/{id:Int}"
     posts: (params?: RouteParams<"/posts"> & QueryParams) => "/posts"
+    blogPost: (params?: RouteParams<"/blog-post/{id:Int}"> & QueryParams) => "/blog-post/{id:Int}"
     about: (params?: RouteParams<"/about"> & QueryParams) => "/about"
     home: (params?: RouteParams<"/"> & QueryParams) => "/"
   }
