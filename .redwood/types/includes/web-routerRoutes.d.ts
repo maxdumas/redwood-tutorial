@@ -8,10 +8,10 @@ type QueryParams = Record<string | number, string | number | boolean>
 declare module '@redwoodjs/router' {
   interface AvailableRoutes {
     // Only "<Route />" components with a "name" and "path" prop will be populated here.
-    newPost: (params?: RouteParams<"/posts/new"> & QueryParams) => "/posts/new"
-    editPost: (params?: RouteParams<"/posts/{id:Int}/edit"> & QueryParams) => "/posts/{id:Int}/edit"
-    post: (params?: RouteParams<"/posts/{id:Int}"> & QueryParams) => "/posts/{id:Int}"
-    posts: (params?: RouteParams<"/posts"> & QueryParams) => "/posts"
+    newPost: (params?: RouteParams<"/admin/posts/new"> & QueryParams) => "/admin/posts/new"
+    editPost: (params?: RouteParams<"/admin/posts/{id:Int}/edit"> & QueryParams) => "/admin/posts/{id:Int}/edit"
+    post: (params?: RouteParams<"/admin/posts/{id:Int}"> & QueryParams) => "/admin/posts/{id:Int}"
+    posts: (params?: RouteParams<"/admin/posts"> & QueryParams) => "/admin/posts"
     blogPost: (params?: RouteParams<"/blog-post/{id:Int}"> & QueryParams) => "/blog-post/{id:Int}"
     about: (params?: RouteParams<"/about"> & QueryParams) => "/about"
     contact: (params?: RouteParams<"/contact"> & QueryParams) => "/contact"
