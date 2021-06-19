@@ -1,3 +1,6 @@
 node_modules
 web/types/graphql.d.ts
 api/types/graphql.d.ts
+
+# Local Netlify folder
+.netlify
