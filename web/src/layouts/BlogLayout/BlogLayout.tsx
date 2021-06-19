@@ -6,7 +6,7 @@ type BlogLayoutProps = {
 }
 
 const BlogLayout = ({ children }: BlogLayoutProps) => {
-  const { logIn, logOut, isAuthenticated } = useAuth()
+  const { logIn, logOut, isAuthenticated, currentUser } = useAuth()
 
   return (
     <>
@@ -24,7 +24,7 @@ const BlogLayout = ({ children }: BlogLayoutProps) => {
             </li>
             <li>
               <button onClick={isAuthenticated ? logOut : logIn}>
-                {isAuthenticated ? 'Log Out' : 'Log In'}
+                {isAuthenticated ? `Log Out (${currentUser.email})` : 'Log In'}
               </button>
             </li>
           </ul>
