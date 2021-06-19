@@ -1,3 +1,8 @@
+input CreatePostInput {
+  title: String!
+  body: String!
+}
+
 scalar Date
 
 scalar DateTime
@@ -6,7 +11,22 @@ scalar JSON
 
 scalar JSONObject
 
+type Mutation {
+  createPost(input: CreatePostInput!): Post!
+  updatePost(id: Int!, input: UpdatePostInput!): Post!
+  deletePost(id: Int!): Post!
+}
+
+type Post {
+  id: Int!
+  title: String!
+  body: String!
+  createdAt: DateTime!
+}
+
 type Query {
+  post(id: Int!): Post
+  posts: [Post!]!
   redwood: Redwood
 }
 
@@ -17,3 +37,8 @@ type Redwood {
 }
 
 scalar Time
+
+input UpdatePostInput {
+  title: String
+  body: String
+}
